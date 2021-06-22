@@ -1,5 +1,5 @@
 {
-  "name": "as2d",
+  "name": "@visamp/as2d",
   "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
@@ -14,7 +14,7 @@
     "jest:simd": "node --experimental-wasm-simd __tests__/Simd.js",
     "test:simd": "run-s build:src asbuild:simd jest:simd",
     "build:all": "run-p asbuild:test build:src",
-    "build:src": "tsc",
+    "build:src": "tsc src/**/*.ts --outDir lib --sourceMap",
     "asbuild:test": "run-s asbuild:glue asbuild:Buffer asbuild:CanvasRenderingContext2D asbuild:save-restore",
     "asbuild:save-restore": "asc assembly/glue.ts assembly/save-restore.test.ts -b build/save-restore.test.wasm -t build/save-restore.test.wat --sourceMap -O3 --validate --debug",
     "asbuild:glue": "asc assembly/glue.ts assembly/glue.test.ts -b build/glue.test.wasm -t build/glue.test.wat --sourceMap -O3  --validate --debug",

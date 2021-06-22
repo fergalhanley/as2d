@@ -65,10 +65,10 @@ export class AS2DGlue<T> {
     return this.wasm!;
   }
 
-  public instantiate(module: any, imports: any): ASUtil & T & ICanvasSYS {
+  public async instantiate(module: any, imports: any): Promise<ASUtil & T & ICanvasSYS> {
     this.imports = imports;
     this.hookImports();
-    this.wasm = instantiate(module, this.imports) as any;
+    this.wasm = await instantiate(module, this.imports) as any;
     this.hookWasmApi();
     return this.wasm!;
   }
